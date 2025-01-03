@@ -1,0 +1,11 @@
+.progress-container{
+    width: 300px;
+    margin: 40px auto;
+}
+
+.progress text{
+    color: #000;
+    font-size: 20px;
+}
+
+

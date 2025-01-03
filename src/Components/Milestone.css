@@ -1,0 +1,42 @@
+.milestones-container {
+    width: 80%;
+    margin: 50px auto;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  .milestones-title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .milestones-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .milestones-table th,
+  .milestones-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .milestones-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .milestones-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .milestones-table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+  
+  .milestones-table tbody tr:hover {
+    background-color: #e6f7ff;
+  }

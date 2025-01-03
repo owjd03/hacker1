@@ -1,0 +1,46 @@
+.drop-off {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    font-family: Arial, sans-serif;
+    border: 3px solid #1abc9c; /* Adds a border around the whole drop-off section */
+    border-radius: 8px; /* Rounded corners for the border */
+    padding: 20px; /* Add padding inside the border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for a better look */
+  }
+  
+  .drop-zone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
+  }
+  
+  .drop-zone:hover {
+    background-color: #e6f7ff;
+  }
+  
+  .file-input {
+    display: none; /* Hide the default file input */
+  }
+  
+  .file-list {
+    margin-top: 20px;
+  }
+  
+  .file-list ul {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .file-list li {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }

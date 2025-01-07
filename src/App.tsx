@@ -5,6 +5,7 @@ import { DocumentStatus, documentStatusData } from "./Components/Status";
 import MiniProgressBar from "./Components/MiniProgressBar";
 import "./Components/TaskStyle.css";
 import DropOff from "./Components/Dropoff";
+import ContractForm from "./Components/ContractForm";
 
 
 function App() {
@@ -155,6 +156,30 @@ function App() {
   if (showDocuments) {
     return (
       <div style={{ textAlign: "center", padding: "20px" }}>
+        <ContractForm />
+        <button
+          onClick={() => setShowDocuments(false)}
+          style={{
+            marginTop: "20px",
+            padding: "10px 20px",
+            fontSize: "16px",
+            backgroundColor: "#990011",
+            color: "#FCF6F5",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          Back
+        </button>
+      </div>
+    );
+  }
+
+
+  /*if (showDocuments) {
+    return (
+      <div style={{ textAlign: "center", padding: "20px" }}>
         <h1>{displayNames[selectedType]} Document files Upload</h1>
         <div
         style={{
@@ -202,7 +227,7 @@ function App() {
         </button>
       </div>
     );
-  }
+  }*/
 
   if (showFunds) {
     return (

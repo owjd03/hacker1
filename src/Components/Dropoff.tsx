@@ -9,11 +9,13 @@ const DropOff: React.FC = () => {
     event.stopPropagation();
 
     const droppedFiles = Array.from(event.dataTransfer.files);
+    console.log("Dropped files:", droppedFiles); // Debugging
     setFiles((prevFiles) => [...prevFiles, ...droppedFiles]);
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = event.target.files ? Array.from(event.target.files) : [];
+    console.log("Selected files:", selectedFiles); // Debugging
     setFiles((prevFiles) => [...prevFiles, ...selectedFiles]);
   };
 
@@ -29,13 +31,15 @@ const DropOff: React.FC = () => {
         onDragOver={handleDragOver}
         onDrop={handleFileDrop}
       >
-        <p>Drag and drop your documents here, or click to select files.</p>
-        <input
-          type="file"
-          multiple
-          className="file-input"
-          onChange={handleFileChange}
-        />
+        <label>
+          <p>Drag and drop your documents here, or click to select files.</p>
+          <input
+            type="file"
+            multiple
+            className="file-input"
+            onChange={handleFileChange}
+          />
+        </label>
       </div>
 
       <div className="file-list">

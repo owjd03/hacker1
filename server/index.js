@@ -1,24 +1,22 @@
 const express = require('express');
-const cors = require('cors'); 
 const bodyParser = require('body-parser');
-const complianceRoutes = require('./routes/compliance');
-const esgScoreRoutes = require('./routes/esgScore');
-const uploadRoutes = require('./routes/upload');
+const cors = require('cors');
 
+// Initialize Express app
 const app = express();
-const PORT = 5001;
+const port = 3000;
 
 // Middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors()); // Allow requests from your frontend (port 5173)
+app.use(bodyParser.json()); // Parse JSON data from incoming requests
 
-// API Routes
-app.use('/api/compliance', complianceRoutes);
-app.use('/api/esg-score', esgScoreRoutes);
-app.use('/api/upload', uploadRoutes);
+// Import routes
+const submitRoutes = require('./routes/submitContact'); // Load routes from 'server/routes'
+app.use('/api', submitRoutes); // Prefix API routes with '/api'
 
 // Start the server
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
 });
+
+

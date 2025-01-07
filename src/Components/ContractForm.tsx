@@ -63,7 +63,7 @@ const ContractForm: React.FC = () => {
     console.log("Form Data Submitted:", JSON.stringify(finalData, null, 2));
 
     try {
-      const response = await fetch("https://your-backend-endpoint/api/contract", {
+      const response = await fetch('http://localhost:3000/api/submit-contact', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

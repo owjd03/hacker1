@@ -7,7 +7,7 @@ import "./Components/TaskStyle.css";
 import DropOff from "./Components/Dropoff";
 import ContractForm from "./Components/ContractForm";
 
-function App() {
+function FirmApp() {
   const [selectedType, setSelectedType] = useState("solar");
   const [showDetails, setShowDetails] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
@@ -418,4 +418,4 @@ function App() {
   );
 }
 
-export default App;
+export default FirmApp;

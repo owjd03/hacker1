@@ -1,21 +1,19 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import TaskBars from "./TaskBars";
 import Home from "./Home";
 import Borrowers from "./Borrowers";
-import "./App.css";
 
-function App() {
+function BankApp() {
   return (
-    <Router>
+    <div className="content">
       <TaskBars />
-      <div className="content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/borrowers" element={<Borrowers />} />
-        </Routes>
-      </div>
-    </Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/borrowers" element={<Borrowers />} />
+      </Routes>
+    </div>
   );
 }
 
-export default App;
+export default BankApp;

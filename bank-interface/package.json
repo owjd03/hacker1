@@ -1,20 +1,18 @@
 {
-  "name": "hacker1",
+  "name": "bank",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev:firm": "vite",
-    "dev:bank": "cd bank-interface && vite",
-    "build:firm": "tsc -b && vite build",
-    "build:bank": "cd bank-interface && vite build",
-    "build:all": "npm run build:firm && npm run build:bank",
-    "lint:firm": "eslint .",
-    "lint:bank": "cd bank-interface && eslint ."
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.1.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

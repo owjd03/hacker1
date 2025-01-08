@@ -1,0 +1,56 @@
+.borrowers-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 20px;
+  }
+  
+
+  
+  li p {
+    margin: 5px 0;
+  }
+  
+  hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+  }
+  .borrower-link {
+    background-color: #f0f8ff; /* Light blue background for distinction */
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Ensure padding works correctly */
+  }
+  
+  .borrower-link:hover {
+    background-color: #f1f1f1; /* Match hover effect with the navigation bar */
+  }
+  
+  .highlight-red .borrower-link {
+    color: red; /* Highlight flagged borrowers */
+  }

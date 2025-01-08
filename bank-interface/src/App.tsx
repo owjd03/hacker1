@@ -9,8 +9,9 @@ function BankApp() {
     <div className="content">
       <TaskBars />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/borrowers" element={<Borrowers />} />
+        <Route path="/" element={<Home />} /> {/* Matches /bank */}
+        <Route path="borrowers" element={<Borrowers />} />{" "}
+        {/* Matches /bank/borrowers */}
       </Routes>
     </div>
   );

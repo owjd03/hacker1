@@ -1,3 +1,4 @@
+/*
 const express = require('express'); // Import Express to create routes and handle HTTP requests
 const OpenAI = require('openai'); // Import OpenAI SDK to interact with the API
 
@@ -41,3 +42,5 @@ router.post('/chat', async (req, res) => {
 
 // Export the router to be used in other parts of the application
 module.exports = router;
+
+*/

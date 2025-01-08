@@ -7,7 +7,6 @@ import "./Components/TaskStyle.css";
 import DropOff from "./Components/Dropoff";
 import ContractForm from "./Components/ContractForm";
 
-
 function App() {
   const [selectedType, setSelectedType] = useState("solar");
   const [showDetails, setShowDetails] = useState(false);
@@ -152,7 +151,6 @@ function App() {
     );
   }
 
-
   if (showDocuments) {
     return (
       <div style={{ textAlign: "center", padding: "20px" }}>
@@ -175,7 +173,6 @@ function App() {
       </div>
     );
   }
-
 
   /*if (showDocuments) {
     return (
@@ -242,10 +239,10 @@ function App() {
         >
           <thead>
             <tr style={{ backgroundColor: "#f4f4f4" }}>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Funds Paid</th>
               <th style={{ border: "1px solid #ddd", padding: "8px" }}>
-                Date
+                Funds Paid
               </th>
+              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Date</th>
               <th style={{ border: "1px solid #ddd", padding: "8px" }}>
                 Action
               </th>
@@ -297,12 +294,21 @@ function App() {
     <div style={{ textAlign: "center", padding: "20px" }}>
       <div className="taskbar">
         <div className="taskbar-right">
-          <button onClick={() => setShowDocuments(true)} className="taskbar-button">Documents</button>
-          <button onClick={() => setShowFunds(true)} className="taskbar-button">Funds</button>
+          <button
+            onClick={() => setShowDocuments(true)}
+            className="taskbar-button"
+          >
+            Documents
+          </button>
+          <button onClick={() => setShowFunds(true)} className="taskbar-button">
+            Funds
+          </button>
         </div>
       </div>
 
-      <div><Greeting /></div>
+      <div>
+        <Greeting />
+      </div>
 
       <h1>Current Progress for {displayNames[selectedType]}</h1>
       <div

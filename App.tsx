@@ -16,7 +16,7 @@ const App: React.FC = () => {
         {/* Show FirmApp when path is /firm */}
         <Route path="/firm" element={<FirmApp />} />
         {/* Show BankApp when path is /bank */}
-        <Route path="/bank" element={<BankApp />} />
+        <Route path="/bank/*" element={<BankApp />} />
       </Routes>
     </Router>
   );

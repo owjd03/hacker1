@@ -1,0 +1,86 @@
+/* Global body styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+  }
+  
+  .login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full height of the viewport */
+    padding: 20px; /* Add some padding around the page */
+  }
+  
+  .login-container {
+    width: 100%; /* Allows it to adapt responsively */
+    max-width: 450px; /* Set a maximum width */
+    min-width: 350px; /* Prevent it from becoming too small */
+    background-color: #fff;
+    padding: 30px; /* Increased padding for a spacious look */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Add spacing between child elements */
+  }
+  
+  .toggle-button {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between buttons */
+  }
+  
+  .toggle-button button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .toggle-button button.active {
+    background-color: #0056b3;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between inputs and button */
+    align-items: center;
+    width: 100%;
+  }
+  
+  form input {
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%; /* Match container width */
+    max-width: 400px; /* Prevent excessive stretching */
+    box-sizing: border-box; /* Include padding and border in width */
+  }
+  
+  form button {
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* Full width of the container */
+    max-width: 400px; /* Prevent excessive stretching */
+  }
+  
+  form button:hover {
+    background-color: #0056b3;
+  }
+  

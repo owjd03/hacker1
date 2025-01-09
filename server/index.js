@@ -11,8 +11,19 @@ app.use(cors()); // Allow requests from your frontend (port 5173)
 app.use(bodyParser.json()); // Parse JSON data from incoming requests
 
 // Import routes
+<<<<<<< Updated upstream
 const submitRoutes = require('./routes/submitContact'); // Load routes from 'server/routes'
 app.use('/api', submitRoutes); // Prefix API routes with '/api'
+=======
+const moduleRoutes= require('./routes/moduleRoutes'); // Import module routes
+// const chatGPTRoutes = require('./routes/chatGPT.js'); // Import ChatGPT routes
+const esgRoutes = require('./routes/esgRoutes'); // Import esg routes
+const fundRoutes = require('./routes/fundRoutes'); // Import fund routes
+
+app.use('/api/esgData', esgRoutes);
+app.use('/api/moduleRoutes', moduleRoutes); 
+// app.use('/api/fundRoutes', fundRoutes);
+>>>>>>> Stashed changes
 
 // Start the server
 app.listen(port, () => {

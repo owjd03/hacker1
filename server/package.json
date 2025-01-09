@@ -1,6 +1,10 @@
 {
   "name": "server",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  "type": "commonjs",
+>>>>>>> Stashed changes
 =======
   "type": "commonjs",
 >>>>>>> Stashed changes

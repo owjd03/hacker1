@@ -60,4 +60,20 @@
   .smart-contract-btn:hover {
     background-color: #0056b3;
   }
+
+.contract-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .contract-button:hover {
+    background-color: #0056b3;
+  }
   

@@ -11,6 +11,9 @@ function TaskBars() {
         <Link to="/bank/borrowers" className="taskbar-button">
           Borrowers
         </Link>
+        <Link to="/bank/search" className="taskbar-button">
+          Search
+        </Link>
       </div>
     </div>
   );

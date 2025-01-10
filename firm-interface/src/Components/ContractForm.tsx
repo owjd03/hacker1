@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type Metric = {
-  co2Emissions: number;
-  energy: number;
+  co2Emissions?: number;
+  energy?: number;
   waterEmissions?: number;
 };
 
@@ -25,14 +25,14 @@ const ContractForm: React.FC = () => {
     { itemName: string; quantity: number }[]
   >([]);
   const [metrics, setMetrics] = useState<Metric>({
-    co2Emissions: 0,
-    energy: 0,
+    co2Emissions: undefined,
+    energy: undefined,
     waterEmissions: undefined,
   });
 
   // Add a new contract item
   const addContractItem = () => {
-    setContractItems([...contractItems, { itemName: "", quantity: 0 }]);
+    setContractItems([...contractItems, { itemName: "", funds: 0 }]);
   };
 
   // Remove a contract item
@@ -43,10 +43,6 @@ const ContractForm: React.FC = () => {
 
   // Handle form submission
   const onSubmit: SubmitHandler<ContractFormData> = async (data) => {
-    if (!metrics.co2Emissions || !metrics.energy) {
-      alert("Please fill in all required metrics: CO2 Emissions and Energy.");
-      return;
-    }
 
     const contractItemsOutput: { [key: string]: number } = {};
     contractItems.forEach((item) => {
@@ -58,8 +54,8 @@ const ContractForm: React.FC = () => {
     const finalData = {
       ...data,
       metrics: {
-        co2Emissions: metrics.co2Emissions,
-        energy: metrics.energy,
+        co2Emissions: metrics.co2Emissions || undefined,
+        energy: metrics.energy || undefined,
         waterEmissions: metrics.waterEmissions || undefined,
       },
       contractItems: contractItemsOutput,
@@ -86,7 +82,7 @@ const ContractForm: React.FC = () => {
       >
         {/* Name Field */}
         <div>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">Company Name:</label>
           <input
             id="name"
             {...register("name", { required: "Name is required" })}
@@ -145,7 +141,7 @@ const ContractForm: React.FC = () => {
         {/* Metrics */}
         <div>
           <h3 style={{ textAlign: "center" }}>Metrics</h3>
-          <label htmlFor="co2Efficiency">CO2 Efficiency:</label>
+          <label htmlFor="co2Efficiency">CO2 Emission (Tons):</label>
           <input
             id="co2Efficiency"
             type="number"
@@ -160,11 +156,9 @@ const ContractForm: React.FC = () => {
               fontSize: "16px",
             }}
           />
-          {!metrics.co2Emissions && (
-            <p style={{ color: "red" }}>CO2 Efficiency is required</p>
-          )}
+        
 
-          <label htmlFor="energy">Energy Efficiency:</label>
+          <label htmlFor="energy">Energy Efficiency (%):</label>
           <input
             id="energy"
             type="number"
@@ -177,13 +171,11 @@ const ContractForm: React.FC = () => {
               width: "100%",
               padding: "10px",
               fontSize: "16px",
+              marginTop: "2%",
             }}
           />
-          {!metrics.energy && (
-            <p style={{ color: "red" }}>Energy Efficiency is required</p>
-          )}
-
-          <label htmlFor="waterEfficiency">Water Efficiency (Optional):</label>
+          
+          <label htmlFor="waterEfficiency">Water Usage (Tons):</label>
           <input
             id="waterEfficiency"
             type="number"
@@ -234,11 +226,11 @@ const ContractForm: React.FC = () => {
               />
               <input
                 type="number"
-                placeholder="Quantity"
-                value={item.quantity}
+                placeholder="Funds"
+                value={item.funds}
                 onChange={(e) => {
                   const updatedItems = [...contractItems];
-                  updatedItems[index].quantity = Number(e.target.value);
+                  updatedItems[index].funds = Number(e.target.value);
                   setContractItems(updatedItems);
                 }}
                 style={{

@@ -43,10 +43,6 @@ const ContractForm: React.FC = () => {
 
   // Handle form submission
   const onSubmit: SubmitHandler<ContractFormData> = async (data) => {
-    if (!metrics.co2Emissions || !metrics.energy) {
-      alert("Please fill in all required metrics: CO2 Emissions and Energy.");
-      return;
-    }
 
     const contractItemsOutput: { [key: string]: number } = {};
     contractItems.forEach((item) => {
@@ -145,7 +141,7 @@ const ContractForm: React.FC = () => {
         {/* Metrics */}
         <div>
           <h3 style={{ textAlign: "center" }}>Metrics</h3>
-          <label htmlFor="co2Efficiency">CO2 Efficiency:</label>
+          <label htmlFor="co2Efficiency">CO2 Emission (Tons):</label>
           <input
             id="co2Efficiency"
             type="number"
@@ -160,11 +156,9 @@ const ContractForm: React.FC = () => {
               fontSize: "16px",
             }}
           />
-          {!metrics.co2Emissions && (
-            <p style={{ color: "red" }}>CO2 Efficiency is required</p>
-          )}
+        
 
-          <label htmlFor="energy">Energy Efficiency:</label>
+          <label htmlFor="energy">Energy Efficiency (%):</label>
           <input
             id="energy"
             type="number"
@@ -177,13 +171,11 @@ const ContractForm: React.FC = () => {
               width: "100%",
               padding: "10px",
               fontSize: "16px",
+              marginTop: "2%",
             }}
           />
-          {!metrics.energy && (
-            <p style={{ color: "red" }}>Energy Efficiency is required</p>
-          )}
-
-          <label htmlFor="waterEfficiency">Water Efficiency (Optional):</label>
+          
+          <label htmlFor="waterEfficiency">Water Usage (Tons):</label>
           <input
             id="waterEfficiency"
             type="number"

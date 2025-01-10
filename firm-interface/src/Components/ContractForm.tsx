@@ -16,8 +16,14 @@ type ContractFormData = {
 };
 
 const ContractForm: React.FC = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<ContractFormData>();
-  const [contractItems, setContractItems] = useState<{ itemName: string; funds: number }[]>([]);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ContractFormData>();
+  const [contractItems, setContractItems] = useState<
+    { itemName: string; quantity: number }[]
+  >([]);
   const [metrics, setMetrics] = useState<Metric>({
     co2Emissions: undefined,
     energy: undefined,
@@ -37,11 +43,15 @@ const ContractForm: React.FC = () => {
 
   // Handle form submission
   const onSubmit: SubmitHandler<ContractFormData> = async (data) => {
-    // Convert contract items into the desired output format
+    if (!metrics.co2Emissions || !metrics.energy) {
+      alert("Please fill in all required metrics: CO2 Emissions and Energy.");
+      return;
+    }
+
     const contractItemsOutput: { [key: string]: number } = {};
-    contractItems.forEach(item => {
-      if (item.itemName && item.funds > 0) {
-        contractItemsOutput[item.itemName] = item.funds;
+    contractItems.forEach((item) => {
+      if (item.itemName && item.quantity > 0) {
+        contractItemsOutput[item.itemName] = item.quantity;
       }
     });
 
@@ -56,40 +66,36 @@ const ContractForm: React.FC = () => {
     };
 
     console.log("Form Data Submitted:", JSON.stringify(finalData, null, 2));
-
-    try {
-      const response = await fetch('http://localhost:3000/api/submit-contact', {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(finalData),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to submit the form.");
-      }
-
-      const result = await response.json();
-      console.log("Form submission successful:", result);
-      alert("Form submitted successfully!");
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("Error submitting the form. Please try again.");
-    }
   };
 
   return (
-    <div style={{ maxWidth: "600px", margin: "0 auto", padding: "20px", fontFamily: "Arial" }}>
-      <h2>Data Form</h2>
-      <form onSubmit={handleSubmit(onSubmit)} style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
+    <div
+      style={{
+        maxWidth: "600px",
+        margin: "0 auto",
+        padding: "20px",
+        fontFamily: "Arial",
+      }}
+    >
+      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
+        Contract Form
+      </h2>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        style={{ display: "flex", flexDirection: "column", gap: "20px" }}
+      >
         {/* Name Field */}
         <div>
           <label htmlFor="name">Company Name:</label>
           <input
             id="name"
             {...register("name", { required: "Name is required" })}
-            style={{ display: "block", width: "100%", padding: "8px", marginTop: "5px" }}
+            style={{
+              display: "block",
+              width: "100%",
+              padding: "10px",
+              fontSize: "16px",
+            }}
           />
           {errors.name && <p style={{ color: "red" }}>{errors.name.message}</p>}
         </div>
@@ -107,59 +113,109 @@ const ContractForm: React.FC = () => {
                 message: "Invalid email format",
               },
             })}
-            style={{ display: "block", width: "100%", padding: "8px", marginTop: "5px" }}
+            style={{
+              display: "block",
+              width: "100%",
+              padding: "10px",
+              fontSize: "16px",
+            }}
           />
-          {errors.email && <p style={{ color: "red" }}>{errors.email.message}</p>}
+          {errors.email && (
+            <p style={{ color: "red" }}>{errors.email.message}</p>
+          )}
         </div>
 
-        {/* Date Field */}
+        {/* Birth Date Field */}
         <div>
-          <label htmlFor="date">Date:</label>
+          <label htmlFor="date">Birth Date:</label>
           <input
             id="date"
             type="date"
-            {...register("date", { required: "Date is required" })}
-            style={{ display: "block", width: "100%", padding: "8px", marginTop: "5px" }}
+            {...register("date", { required: "Birth date is required" })}
+            style={{
+              display: "block",
+              width: "100%",
+              padding: "10px",
+              fontSize: "16px",
+            }}
           />
           {errors.date && <p style={{ color: "red" }}>{errors.date.message}</p>}
         </div>
 
         {/* Metrics */}
         <div>
-          <h3>Metrics</h3>
-          <label htmlFor="emissions">CO2 Emissions (Optional):</label>
+          <h3 style={{ textAlign: "center" }}>Metrics</h3>
+          <label htmlFor="co2Efficiency">CO2 Efficiency:</label>
           <input
-            id="emissions"
+            id="co2Efficiency"
             type="number"
-            value={metrics.co2Emissions || ""}
-            onChange={(e) => setMetrics({ ...metrics, co2Emissions: Number(e.target.value) || undefined })}
-            style={{ display: "block", width: "100%", padding: "8px", marginTop: "5px" }}
+            value={metrics.co2Emissions}
+            onChange={(e) =>
+              setMetrics({ ...metrics, co2Emissions: Number(e.target.value) })
+            }
+            style={{
+              display: "block",
+              width: "100%",
+              padding: "10px",
+              fontSize: "16px",
+            }}
           />
+          {!metrics.co2Emissions && (
+            <p style={{ color: "red" }}>CO2 Efficiency is required</p>
+          )}
 
-          <label htmlFor="energy">Energy Efficiency(Optional):</label>
+          <label htmlFor="energy">Energy Efficiency:</label>
           <input
             id="energy"
             type="number"
-            value={metrics.energy || ""}
-            onChange={(e) => setMetrics({ ...metrics, energy: Number(e.target.value) || undefined })}
-            style={{ display: "block", width: "100%", padding: "8px", marginTop: "5px" }}
+            value={metrics.energy}
+            onChange={(e) =>
+              setMetrics({ ...metrics, energy: Number(e.target.value) })
+            }
+            style={{
+              display: "block",
+              width: "100%",
+              padding: "10px",
+              fontSize: "16px",
+            }}
           />
+          {!metrics.energy && (
+            <p style={{ color: "red" }}>Energy Efficiency is required</p>
+          )}
 
-          <label htmlFor="water">Water Usage (Optional):</label>
+          <label htmlFor="waterEfficiency">Water Efficiency (Optional):</label>
           <input
-            id="water"
+            id="waterEfficiency"
             type="number"
             value={metrics.waterEmissions || ""}
-            onChange={(e) => setMetrics({ ...metrics, waterEmissions: Number(e.target.value) || undefined })}
-            style={{ display: "block", width: "100%", padding: "8px", marginTop: "5px" }}
+            onChange={(e) =>
+              setMetrics({
+                ...metrics,
+                waterEmissions: Number(e.target.value) || undefined,
+              })
+            }
+            style={{
+              display: "block",
+              width: "100%",
+              padding: "10px",
+              fontSize: "16px",
+            }}
           />
         </div>
 
         {/* Contract Items */}
         <div>
-          <h3>Contract Items</h3>
+          <h3 style={{ textAlign: "center" }}>Contract Items</h3>
           {contractItems.map((item, index) => (
-            <div key={index} style={{ display: "flex", gap: "10px", marginBottom: "10px" }}>
+            <div
+              key={index}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "2fr 1fr auto",
+                gap: "10px",
+                alignItems: "center",
+              }}
+            >
               <input
                 type="text"
                 placeholder="Item Name"
@@ -169,7 +225,12 @@ const ContractForm: React.FC = () => {
                   updatedItems[index].itemName = e.target.value;
                   setContractItems(updatedItems);
                 }}
-                style={{ width: "100px", flex: "1", padding: "8px" }}
+                style={{
+                  padding: "10px",
+                  fontSize: "16px",
+                  border: "1px solid #ccc",
+                  borderRadius: "5px",
+                }}
               />
               <input
                 type="number"
@@ -180,16 +241,22 @@ const ContractForm: React.FC = () => {
                   updatedItems[index].funds = Number(e.target.value);
                   setContractItems(updatedItems);
                 }}
-                style={{ width: "100px", padding: "8px" }}
+                style={{
+                  padding: "10px",
+                  fontSize: "16px",
+                  border: "1px solid #ccc",
+                  borderRadius: "5px",
+                }}
               />
               <button
                 type="button"
                 onClick={() => removeContractItem(index)}
                 style={{
-                  padding: "5px 10px",
+                  padding: "10px",
                   backgroundColor: "red",
                   color: "white",
                   border: "none",
+                  borderRadius: "5px",
                   cursor: "pointer",
                 }}
               >
@@ -205,7 +272,11 @@ const ContractForm: React.FC = () => {
               padding: "10px",
               backgroundColor: "#007BFF",
               color: "white",
+              fontSize: "16px",
               border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              width: "100%",
             }}
           >
             Add Item
@@ -215,7 +286,14 @@ const ContractForm: React.FC = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          style={{ padding: "10px", backgroundColor: "#28a745", color: "white", border: "none" }}
+          style={{
+            padding: "10px",
+            backgroundColor: "#28a745",
+            color: "white",
+            fontSize: "16px",
+            border: "none",
+            borderRadius: "5px",
+          }}
         >
           Submit
         </button>

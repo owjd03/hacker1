@@ -74,78 +74,7 @@ function MainPage() {
             marginTop: "20px",
             padding: "10px 20px",
             fontSize: "16px",
-            backgroundColor: "#990011",
-            color: "#FCF6F5",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
-          Back
-        </button>
-      </div>
-    );
-  }
-
-  if (showDetails) {
-    return (
-      <div style={{ textAlign: "center", padding: "20px" }}>
-        <h1>{displayNames[selectedType]} Document Status</h1>
-        <h2>Document Upload Status</h2>
-        <table
-          style={{
-            width: "80%",
-            margin: "20px auto",
-            borderCollapse: "collapse",
-          }}
-        >
-          <thead>
-            <tr style={{ backgroundColor: "#f4f4f4" }}>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Date</th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>
-                Document Name
-              </th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>
-                Status
-              </th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>
-                Reason
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentDocuments.map((doc, index) => (
-              <tr key={index}>
-                <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                  {doc.date}
-                </td>
-                <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                  {doc.documentName}
-                </td>
-                <td
-                  style={{
-                    border: "1px solid #ddd",
-                    padding: "8px",
-                    color: doc.status === "Approved" ? "green" : "red",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {doc.status}
-                </td>
-                <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                  {doc.reason || "NA"}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <button
-          onClick={() => setShowDetails(false)}
-          style={{
-            marginTop: "20px",
-            padding: "10px 20px",
-            fontSize: "16px",
-            backgroundColor: "#990011",
+            backgroundColor: "#007bff",
             color: "#FCF6F5",
             border: "none",
             borderRadius: "5px",
@@ -243,49 +172,21 @@ function MainPage() {
           <button
             onClick={() => setShowSummary(true)}
             style={{
-              padding: "10px 20px",
-              fontSize: "16px",
-              backgroundColor: "#990011",
+              padding: "15px 30px",
+              fontSize: "18px",
+              backgroundColor: "#007bff",
               color: "#FCF6F5",
               border: "none",
               borderRadius: "5px",
               cursor: "pointer",
-              minWidth: "120px",
-              height: "100%",
+              minWidth: "400px",
+              height: "60px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
             }}
           >
             Summary
-          </button>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "50px", // Set a fixed height for the container
-          }}
-        >
-          <button
-            onClick={() => setShowDetails(true)}
-            style={{
-              padding: "10px 20px",
-              fontSize: "16px",
-              backgroundColor: "#990011",
-              color: "#FCF6F5",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-              minWidth: "120px",
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            View More
           </button>
         </div>
       </div>

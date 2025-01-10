@@ -3,55 +3,70 @@ from bs4 import BeautifulSoup
 import re
 import json
 
-# Define websites for each category
+# Define websites for Green Energy
 websites = {
     "green_energy": [
-        "https://en.wikipedia.org/wiki/Renewable_energy_in_the_United_States"#,
-        #"https://en.wikipedia.org/wiki/Tesla_Energy"
-    ],
-    "natural_disasters": [
-        "https://en.wikipedia.org/wiki/Natural_disasters_in_Japan"#,
-        #"https://en.wikipedia.org/wiki/Natural_disasters_in_China"
-    ],
-    "political_unrest": [
-        "https://en.wikipedia.org/wiki/List_of_incidents_of_civil_unrest_in_the_United_States"#,
-        #"https://en.wikipedia.org/wiki/List_of_conflicts_in_Mexico"
+        "https://en.wikipedia.org/wiki/Renewable_energy_in_the_United_States",
+        "https://en.wikipedia.org/wiki/Tesla_Energy"
     ]
 }
+
+# Function to validate and filter realistic project costs
+def is_realistic_cost(cost, unit):
+    """
+    Validate if the extracted cost is realistic based on known project ranges.
+    """
+    try:
+        cost = float(cost.replace(",", ""))  # Remove commas and convert to float
+        if unit.lower() == "billion" and cost >= 0.1:  # Billion-dollar projects
+            return True
+        if unit.lower() == "million" and cost >= 10:  # Million-dollar projects
+            return True
+        if not unit and cost >= 100000:  # Assume raw values should be high
+            return True
+    except ValueError:
+        pass
+    return False
+
+# Function to convert cost into numeric form
+def convert_to_number(cost, unit):
+    """
+    Convert a cost string with a unit (e.g., '2.6 billion') into a numeric value.
+    """
+    try:
+        cost = float(cost.replace(",", ""))  # Remove commas and convert to float
+        if unit.lower() == "billion":
+            return int(cost * 1e9)
+        elif unit.lower() == "million":
+            return int(cost * 1e6)
+        elif unit.lower() == "thousand":
+            return int(cost * 1e3)
+        else:
+            return int(cost)
+    except ValueError:
+        return None
 
 # Function to extract data for Green Energy
 def extract_green_energy(page_text):
     data = []
-    # Updated regex to include flexibility in matching the energy type and cost
-    matches = re.findall(r"(solar|wind|hydropower|geothermal|biomass).*?\$([\d,\.]+)\s*(million|billion|thousand|trillion)?", page_text, flags=re.IGNORECASE)
+    # Regex to capture energy type and costs with context
+    matches = re.findall(
+        r"(solar|wind|hydropower|geothermal|biomass).*?\$([\d,\.]+)\s*(million|billion|thousand|trillion)?",
+        page_text,
+        flags=re.IGNORECASE
+    )
     for match in matches:
         try:
             energy_type = match[0].capitalize()
             cost = match[1]
             unit = match[2] if match[2] else ""  # Handle cases where "million" or "billion" might not exist
-            full_cost = f"${cost} {unit}".strip()  # Combine cost and unit, removing extra spaces
-            data.append({energy_type: full_cost})
+
+            # Validate and filter realistic costs
+            if is_realistic_cost(cost, unit):
+                numeric_cost = convert_to_number(cost, unit)  # Convert to numeric
+                data.append({energy_type: numeric_cost})
         except IndexError:
-            # Skip the entry if the tuple doesn't have the expected structure
             continue
-    return data
-
-# Function to extract data for Natural Disasters
-def extract_natural_disasters(page_text):
-    data = []
-    matches = re.findall(r"([A-Z][a-z]+(?:, [A-Z][a-z]+)?)\s*(earthquake|flood|hurricane|cyclone).*?\b(\d{4})\b", page_text, flags=re.IGNORECASE)
-    for match in matches:
-        location, disaster_type, year = match
-        data.append({location: f"{disaster_type.capitalize()} {year}"})
-    return data
-
-# Function to extract data for Political Unrest
-def extract_political_unrest(page_text):
-    data = []
-    matches = re.findall(r"([A-Z][a-z]+(?:, [A-Z][a-z]+)?)\s*(protests|riots|civil unrest|incidents).*?\b(\d{4})\b", page_text, flags=re.IGNORECASE)
-    for match in matches:
-        location, unrest_type, year = match
-        data.append({location: f"{unrest_type.capitalize()} {year}"})
     return data
 
 # Function to scrape a single website based on the category
@@ -73,13 +88,9 @@ def scrape_website(url, category):
         # Extract all text content
         page_text = soup.get_text(separator=" ", strip=True)
         
-        # Extract data based on category
+        # Extract data for Green Energy
         if category == "green_energy":
             data = extract_green_energy(page_text)
-        elif category == "natural_disasters":
-            data = extract_natural_disasters(page_text)
-        elif category == "political_unrest":
-            data = extract_political_unrest(page_text)
         else:
             data = []
 
@@ -99,9 +110,7 @@ def scrape_website(url, category):
 # Function to scrape all websites for all categories
 def scrape_all(websites):
     results = {
-        "green_energy": [],
-        "natural_disasters": [],
-        "political_unrest": []
+        "green_energy": []
     }
     for category, urls in websites.items():
         for url in urls:

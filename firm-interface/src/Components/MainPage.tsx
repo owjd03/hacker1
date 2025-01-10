@@ -1,18 +1,24 @@
 import { useState } from "react";
-import CircularProgress, { Props } from "./Components/Progress";
-import Greeting from "./Components/Greeting";
-import { DocumentStatus, documentStatusData } from "./Components/Status";
-import MiniProgressBar from "./Components/MiniProgressBar";
-import "./Components/TaskStyle.css";
-import DropOff from "./Components/Dropoff";
+import CircularProgress, { Props } from "./Progress";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+} from "react-router-dom";
+import Greeting from "./Greeting";
+import MiniProgressBar from "./MiniProgressBar";
+import "./TaskStyle.css";
+import { documentStatusData } from "./Status";
 
-
-function App() {
+function MainPage() {
   const [selectedType, setSelectedType] = useState("solar");
   const [showDetails, setShowDetails] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
   const [showDocuments, setShowDocuments] = useState(false);
-  const [showFunds, setShowFunds] = useState(false);
+
+  const navigate = useNavigate();
 
   const dat: Record<string, Props> = {
     solar: { current: 150, target: 500 },
@@ -28,6 +34,7 @@ function App() {
 
   const currentProgress = dat[selectedType];
   const currentDocuments = documentStatusData[selectedType];
+
   const calculateProgress = (current: number, target: number) =>
     ((current / target) * 100).toFixed(1);
 
@@ -151,133 +158,32 @@ function App() {
     );
   }
 
-
-  if (showDocuments) {
-    return (
-      <div style={{ textAlign: "center", padding: "20px" }}>
-        <h1>{displayNames[selectedType]} Document files Upload</h1>
-        <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-start", // Align items to the left
-          alignItems: "center",
-          marginBottom: "40px",
-          paddingLeft: "20px", // Add padding for some space from the edge
-        }}
-      >
-        <select
-          value={selectedType}
-          onChange={(e) => setSelectedType(e.target.value)}
-          style={{
-            marginRight: "auto",
-            padding: "15px",
-            fontSize: "20px",
-            marginTop: "20px",
-          }}
-        >
-          <option value="solar">Solar Panel</option>
-          <option value="wind">Wind Turbines</option>
-          <option value="trees">Trees</option>
-        </select>
-      </div>
-
-      <div>
-        <h1 style={{ textAlign: "center", margin: "20px 0" }}>Document Drop-Off</h1>
-        <DropOff />
-      </div>
-        <button
-          onClick={() => setShowDocuments(false)}
-          style={{
-            marginTop: "20px",
-            padding: "10px 20px",
-            fontSize: "16px",
-            backgroundColor: "#990011",
-            color: "#FCF6F5",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
-          Back
-        </button>
-      </div>
-    );
-  }
-
-  if (showFunds) {
-    return (
-      <div style={{ textAlign: "center", padding: "20px" }}>
-        <h2>Milestones</h2>
-        <table
-          style={{
-            width: "80%",
-            margin: "20px auto",
-            borderCollapse: "collapse",
-          }}
-        >
-          <thead>
-            <tr style={{ backgroundColor: "#f4f4f4" }}>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Funds Paid</th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>
-                Date
-              </th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>
-                Action
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentDocuments.map((doc, index) => (
-              <tr key={index}>
-                <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                  {doc.fund}
-                </td>
-                <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                  {doc.dates}
-                </td>
-                <td
-                  style={{
-                    border: "1px solid #ddd",
-                    padding: "8px",
-                    color: "green",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {doc.action}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <button
-          onClick={() => setShowFunds(false)}
-          style={{
-            marginTop: "20px",
-            padding: "10px 20px",
-            fontSize: "16px",
-            backgroundColor: "#990011",
-            color: "#FCF6F5",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
-          Back
-        </button>
-      </div>
-    );
-  }
-
   return (
     <div style={{ textAlign: "center", padding: "20px" }}>
       <div className="taskbar">
         <div className="taskbar-right">
-          <button onClick={() => setShowDocuments(true)} className="taskbar-button">Documents</button>
-          <button onClick={() => setShowFunds(true)} className="taskbar-button">Funds</button>
+          <Link to="/firm/documents" state={{ selectedType }}>
+            <button
+              onClick={() =>
+                navigate("/firm/documents", { state: { selectedType } })
+              }
+              className="taskbar-button"
+            >
+              Documents
+            </button>
+          </Link>
+          <button
+            onClick={() => navigate("/firm/funds", { state: { selectedType } })}
+            className="taskbar-button"
+          >
+            Funds
+          </button>
         </div>
       </div>
 
-      <div><Greeting /></div>
+      <div>
+        <Greeting />
+      </div>
 
       <h1>Current Progress for {displayNames[selectedType]}</h1>
       <div
@@ -387,4 +293,4 @@ function App() {
   );
 }
 
-export default App;
+export default MainPage;

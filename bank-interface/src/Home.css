@@ -1,0 +1,79 @@
+/* Home.css */
+.overview-boxes {
+    display: flex; /* Align boxes horizontally */
+    justify-content: center; /* Add space between boxes */
+    gap: 20px; /* Optional: Space between the boxes */
+    flex-wrap: wrap;
+  }
+  
+  .left-box, .right-box {
+    flex: 1; /* Make both boxes the same width */
+    top: 40px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+
+  .left-box h2, .right-box h2{
+    color: #007a50;
+  }
+
+  .left-box p, .right-box p{
+    color: #000;
+  }
+  /* Optional: Add a max-width to avoid very wide boxes on larger screens */
+  .left-box, .right-box {
+    max-width: 48%; /* 48% allows space for the gap */
+  }
+  /* Ensure the content starts below the navigation bar */
+  .home-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontal centering */
+    justify-content: center; /* Vertical centering */
+    min-height: calc(100vh - 60px); /* Full height minus navigation bar */
+    padding: 0 20px; /* Optional: Padding for small screens */
+    text-align: center; /* Center-align text inside the container */
+    
+  }
+  
+  .home-page h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 40px; /* Space between heading and blocks */
+  }
+
+  .smart-contract-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .smart-contract-btn:hover {
+    background-color: #0056b3;
+  }
+
+.contract-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .contract-button:hover {
+    background-color: #0056b3;
+  }
+  

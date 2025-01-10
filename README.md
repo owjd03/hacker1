@@ -1,50 +1,13 @@
-# React + TypeScript + Vite
+#Project Verdi
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Images of our interface 
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+<img width="1726" alt="Screenshot 2025-01-11 at 12 52 44 AM" src="https://github.com/user-attachments/assets/f5a2e05a-8713-4aeb-8599-1a3e5d9460c7" />
+<img width="1724" alt="Screenshot 2025-01-11 at 12 50 21 AM" src="https://github.com/user-attachments/assets/b487bd5e-0f95-49c9-81b1-f99a3d93801b" />
+<img width="1724" alt="Screenshot 2025-01-11 at 12 50 30 AM" src="https://github.com/user-attachments/assets/c3d82af8-e2b1-4f1c-ab1b-4efff7ad1d1f" />
+<img width="1703" alt="Screenshot 2025-01-11 at 12 50 46 AM" src="https://github.com/user-attachments/assets/80b09fde-aed1-4776-bd4d-ea4caf8d5eb0" />
+<img width="1725" alt="Screenshot 2025-01-11 at 12 50 56 AM" src="https://github.com/user-attachments/assets/9632ee6a-8882-4968-9d4f-4fa1f1b22dbf" />
+<img width="1719" alt="Screenshot 2025-01-11 at 12 51 12 AM" src="https://github.com/user-attachments/assets/47ac6c12-f8c1-46de-85ea-a774a9fff56d" />
+<img width="1728" alt="Screenshot 2025-01-11 at 12 51 33 AM" src="https://github.com/user-attachments/assets/1c2a3e6a-6e42-4650-b66d-6364263925f9" />
+<img width="1722" alt="Screenshot 2025-01-11 at 12 51 46 AM" src="https://github.com/user-attachments/assets/458ebc5d-2fe2-434f-b252-82d72608b440" />
+<img width="1726" alt="Screenshot 2025-01-11 at 12 52 02 AM" src="https://github.com/user-attachments/assets/cddc4000-fd5d-4924-83ec-a7f9dfb29ced" />

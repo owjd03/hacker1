@@ -2,7 +2,7 @@
 
 Images of our interface 
 
-<img width="1723" alt="Screenshot 2025-01-11 at 12 48 45 AM" src="https://github.com/user-attachments/assets/9a1ec1bf-cdbd-4553-a53e-e587232a2529" />
+<img width="1726" alt="Screenshot 2025-01-11 at 12 52 44 AM" src="https://github.com/user-attachments/assets/f5a2e05a-8713-4aeb-8599-1a3e5d9460c7" />
 <img width="1724" alt="Screenshot 2025-01-11 at 12 50 21 AM" src="https://github.com/user-attachments/assets/b487bd5e-0f95-49c9-81b1-f99a3d93801b" />
 <img width="1724" alt="Screenshot 2025-01-11 at 12 50 30 AM" src="https://github.com/user-attachments/assets/c3d82af8-e2b1-4f1c-ab1b-4efff7ad1d1f" />
 <img width="1703" alt="Screenshot 2025-01-11 at 12 50 46 AM" src="https://github.com/user-attachments/assets/80b09fde-aed1-4776-bd4d-ea4caf8d5eb0" />

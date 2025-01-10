@@ -92,15 +92,15 @@ function Borrowers() {
     return (
       <div className="borrower-detail">
         <h1>{selectedBorrower.name}</h1>
-      <div className="discrepancy-box">
-        <h2>Discrepancies</h2>
-          <div className="discrepancy-table">
-            <div className="row">
-              <span className="reason">Reason: {selectedBorrower.reason}</span>
-              <span className="date">Date: {selectedBorrower.date}</span>
-            </div>
-          </div>
-        </div>
+          {/* <div className="discrepancy-box">
+            ?<h2>Discrepancies</h2>
+              <div className="discrepancy-table">
+                <div className="row">
+                  <span className="reason">Reason: {selectedBorrower.reason}</span>
+                  <span className="date">Date: {selectedBorrower.date}</span>
+                </div>
+              </div>
+            </div> */}
         <div className="progress-bar">
           <p>
             Solar:{" "}

@@ -1,32 +1,19 @@
-/* Home.css */
-.overview-boxes {
-    display: flex; /* Align boxes horizontally */
-    justify-content: center; /* Add space between boxes */
-    gap: 20px; /* Optional: Space between the boxes */
-    flex-wrap: wrap;
-  }
-  
-  .left-box, .right-box {
-    flex: 1; /* Make both boxes the same width */
-    top: 40px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  .overview-boxes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
   }
 
-
-  .left-box h2, .right-box h2{
-    color: #007a50;
+  .left-box {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
   }
 
-  .left-box p, .right-box p{
-    color: #000;
-  }
-  /* Optional: Add a max-width to avoid very wide boxes on larger screens */
-  .left-box, .right-box {
-    max-width: 48%; /* 48% allows space for the gap */
-  }
   /* Ensure the content starts below the navigation bar */
   .home-page {
     display: flex;

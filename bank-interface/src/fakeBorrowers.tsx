@@ -32,11 +32,11 @@ export const fakeBorrowers: Borrower[] = [
   {
     id: 1,
     name: "Borrower A",
-    date: "2025-01-01",
-    reason: "Incomplete milestone documentation",
+    date: "NA",
+    reason: "NA",
     fundsDistributed: 100000,
     milestonesCompleted: 80,
-    discrepancies: 2,
+    discrepancies: 0,
     solar: 70, 
     wind: 88, 
     trees: 75
@@ -44,20 +44,20 @@ export const fakeBorrowers: Borrower[] = [
   {
     id: 2,
     name: "Borrower B",
-    date: "2025-01-03",
-    reason: "Discrepancy in payment records",
+    date: "NA",
+    reason: "NA",
     fundsDistributed: 250000,
     milestonesCompleted: 60,
-    discrepancies: 1, solar: 70, wind: 88, trees: 75
+    discrepancies: 0, solar: 70, wind: 88, trees: 75
   },
   {
     id: 3,
     name: "Borrower C",
-    date: "2025-01-05",
-    reason: "Overdue milestone approval",
+    date: "NA",
+    reason: "NA",
     fundsDistributed: 150000,
     milestonesCompleted: 75,
-    discrepancies: 1, solar: 70, wind: 88, trees: 75
+    discrepancies: 0, solar: 70, wind: 88, trees: 75
   },
   {
     id: 4,
@@ -82,15 +82,15 @@ export const fakeBorrowers: Borrower[] = [
 // Document Upload Data
 export const documentUploadData: DocumentUpload[] = [
   // Borrower A
-  { borrowerId: 1, date: "2024-01-15", name: "Installation Plan", status: "Rejected", reason: "Incomplete details", category: "Solar" },
+  { borrowerId: 1, date: "2024-01-15", name: "Installation Plan", status: "Approved", reason: "NA", category: "Solar" },
   { borrowerId: 1, date: "2024-01-20", name: "Inspection Certificate", status: "Approved", reason: "NA", category: "Wind" },
 
   // Borrower B
-  { borrowerId: 2, date: "2024-01-18", name: "Site Plan", status: "Rejected", reason: "Missing documents", category: "Trees" },
+  { borrowerId: 2, date: "2024-01-18", name: "Site Plan", status: "Approved", reason: "NA", category: "Trees" },
   { borrowerId: 2, date: "2024-01-22", name: "Energy Report", status: "Approved", reason: "NA", category: "Solar" },
 
   // Borrower C
-  { borrowerId: 3, date: "2024-01-25", name: "Maintenance Log", status: "Rejected", reason: "Invalid document format", category: "Wind" },
+  { borrowerId: 3, date: "2024-01-25", name: "Maintenance Log", status: "Approved", reason: "NA", category: "Wind" },
   { borrowerId: 3, date: "2024-01-30", name: "Installation Manual", status: "Approved", reason: "NA", category: "Trees" },
 
   // Borrower D

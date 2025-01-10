@@ -6,14 +6,9 @@ function CenteredSearchBar() {
   const [showFields, setShowFields] = useState(false); // State to control input fields visibility
 
   const handleSearch = () => {
-    // Create the JSON object
-    const jsonObject = { firm: query };
-
-    // Log the JSON object
-    console.log("JSON Object Formed:", JSON.stringify(jsonObject, null, 2));
-
-    // Show additional input fields (unchanged functionality)
-    setShowFields(true);
+    const searchObject = { firm: query }; // Create JSON object with search query
+    console.log(JSON.stringify(searchObject, null, 2)); // Log the JSON object
+    setShowFields(true); // Show the input fields when search is performed
   };
 
   return (
@@ -30,38 +25,6 @@ function CenteredSearchBar() {
           Search
         </button>
       </div>
-      {showFields && (
-        <div className="input-fields">
-          {/* Additional fields */}
-          <div className="input-group">
-            <label htmlFor="co2Emissions">CO₂ Emissions:</label>
-            <input
-              type="text"
-              id="co2Emissions"
-              name="co2Emissions"
-              className="input-field"
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="energy">Energy:</label>
-            <input
-              type="text"
-              id="energy"
-              name="energy"
-              className="input-field"
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="waterEfficiency">Water Efficiency:</label>
-            <input
-              type="text"
-              id="waterEfficiency"
-              name="waterEfficiency"
-              className="input-field"
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 }

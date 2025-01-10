@@ -1,66 +1,48 @@
 import React, { useState } from "react";
 import "./CenteredSearchBar.css";
+import companyDatabase from "./fake_company_database.json"; // Import the JSON database
 
 function CenteredSearchBar() {
-  const [query, setQuery] = useState("");
-  const [companyDetails, setCompanyDetails] = useState(null); // Store the company's data
-  const [errorMessage, setErrorMessage] = useState(""); // Handle errors
+  const [query, setQuery] = useState(""); // State to store the search query
+  const [companyDetails, setCompanyDetails] = useState(null); // State to store company details
+  const [errorMessage, setErrorMessage] = useState(""); // State to store error messages
 
-<<<<<<< Updated upstream
+  // Function to handle the search button click
   const handleSearch = () => {
-    const searchObject = { firm: query }; // Create JSON object with search query
-    console.log(JSON.stringify(searchObject, null, 2)); // Log the JSON object
-    setShowFields(true); // Show the input fields when search is performed
-=======
-  const handleSearch = async () => {
-    // Create the JSON object with the query
-    const dataToSend = {
-      firm: query,
-    };
+    // Search for the company in the JSON database
+    const foundCompany = companyDatabase.companies.find(
+      (company) => company.company_name.toLowerCase() === query.toLowerCase()
+    );
 
-    // Send the JSON object as a query parameter to the backend
-    try {
-      const response = await fetch(
-        `http://localhost:3000?data=${encodeURIComponent(
-          JSON.stringify(dataToSend)
-        )}`
-      );
-
-      if (response.ok) {
-        const result = await response.json();
-        setCompanyDetails(result); // Assume the backend returns company details
-        setErrorMessage(""); // Clear error message
-        console.log("Data sent successfully:", dataToSend);
-      } else {
-        setCompanyDetails(null);
-        setErrorMessage("Company not found or backend error.");
-        console.error("Failed to send data to backend");
-      }
-    } catch (error) {
-      setCompanyDetails(null);
-      setErrorMessage("Error connecting to the backend.");
-      console.error("Error sending data to backend:", error);
+    if (foundCompany) {
+      setCompanyDetails(foundCompany); // Update company details
+      setErrorMessage(""); // Clear any error messages
+    } else {
+      setCompanyDetails(null); // Clear company details
+      setErrorMessage("Company not found."); // Set error message
     }
->>>>>>> Stashed changes
   };
 
+  // JSX to render the search bar and display the results
   return (
     <div className="search-container">
       <div className="centered-search-bar">
         <input
           type="text"
-          placeholder="Search..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search..." // Placeholder text for the input
+          value={query} // Bind the input value to the query state
+          onChange={(e) => setQuery(e.target.value)} // Update the query state on input change
           className="search-input"
         />
         <button onClick={handleSearch} className="search-button">
           Search
         </button>
       </div>
-<<<<<<< Updated upstream
-=======
+
+      {/* Display error message if any */}
       {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+      {/* Display company details if they exist */}
       {companyDetails && (
         <div>
           {/* Data Display Section */}
@@ -98,7 +80,6 @@ function CenteredSearchBar() {
           </div>
         </div>
       )}
->>>>>>> Stashed changes
     </div>
   );
 }

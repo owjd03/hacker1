@@ -26,9 +26,18 @@ app.post("/login", (req, res) => {
 
   
 // Import routes
-const submitRoutes = require('./routes/submitContact'); // Load routes from 'server/routes'
+const moduleRoutes= require('./routes/moduleRoutes'); // Import module routes
+const esgRoutes = require('./routes/esgRoutes'); // Import esg routes
+const contractRoutes = require('./routes/contractRoutes'); // Import fund routes
 
-app.use('/api', submitRoutes); // Prefix API routes with '/api'
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
+app.use('/api/modules', moduleRoutes); 
+app.use('/api/esgData', esgRoutes);
+app.use('/api/contracts', contractRoutes);
+
 
 
 //app.use('/api/chatgpt', chatGPTRoutes); // Prefix ChatGPT routes with '/api/chatgpt'

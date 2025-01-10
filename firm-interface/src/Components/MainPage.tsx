@@ -216,11 +216,7 @@ function MainPage() {
           target={currentProgress.target}
         />
       </div>
-      <p
-        style={{
-          fontSize: "18px",
-        }}
-      >
+      <p>
         {((currentProgress.current / currentProgress.target) * 100).toFixed(1)}%
         complete
       </p>
@@ -247,14 +243,14 @@ function MainPage() {
           <button
             onClick={() => setShowSummary(true)}
             style={{
-              padding: "20px 20px",
-              fontSize: "18px",
-              backgroundColor: "#007bff",
+              padding: "10px 20px",
+              fontSize: "16px",
+              backgroundColor: "#990011",
               color: "#FCF6F5",
               border: "none",
               borderRadius: "5px",
               cursor: "pointer",
-              minWidth: "200px",
+              minWidth: "120px",
               height: "100%",
               display: "flex",
               alignItems: "center",
@@ -271,7 +267,27 @@ function MainPage() {
             justifyContent: "center",
             height: "50px", // Set a fixed height for the container
           }}
-        ></div>
+        >
+          <button
+            onClick={() => setShowDetails(true)}
+            style={{
+              padding: "10px 20px",
+              fontSize: "16px",
+              backgroundColor: "#990011",
+              color: "#FCF6F5",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              minWidth: "120px",
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            View More
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -59,7 +59,7 @@ const FundsPage = () => {
           marginTop: "20px",
           padding: "10px 20px",
           fontSize: "16px",
-          backgroundColor: "#990011",
+          backgroundColor: "#007bff",
           color: "#FCF6F5",
           border: "none",
           borderRadius: "5px",

@@ -14,7 +14,9 @@ const DropOff: React.FC = () => {
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFiles = event.target.files ? Array.from(event.target.files) : [];
+    const selectedFiles = event.target.files
+      ? Array.from(event.target.files)
+      : [];
     console.log("Selected files:", selectedFiles); // Debugging
     setFiles((prevFiles) => [...prevFiles, ...selectedFiles]);
   };

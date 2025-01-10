@@ -1,6 +1,11 @@
-.progress-container{
+.progress-container {
     width: 300px;
-    margin: 40px auto;
+    position: relative;
+    top: -40px; /* Moves it upward by 20px */
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 0px;
 }
 
 .progress text{

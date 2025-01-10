@@ -4,7 +4,7 @@ import "./TaskStyle.css";
 function TaskBars() {
   const navigate = useNavigate();
 
-  const handleNavigation = (path) => {
+  const handleNavigation = (path: string) => {
     navigate(path);
   };
 

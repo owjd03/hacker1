@@ -17,7 +17,7 @@ const Login: React.FC = () => {
       password,
     };
 
-    alert(JSON.stringify(loginData, null, 2));
+    console.log("Login Data Submitted:", loginData);
 
     try {
       const response = await fetch("http://localhost:3000/login", {
@@ -31,7 +31,6 @@ const Login: React.FC = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("Response from server:", data);
-        alert(`Server Response: ${JSON.stringify(data, null, 2)}`);
 
         if (selectedRole === "firm") {
           navigate("/firm");
@@ -39,15 +38,20 @@ const Login: React.FC = () => {
           navigate("/bank");
         }
       } else {
-        alert(`Failed to log in: ${response.statusText}`);
+        console.error("Failed to log in:", response.statusText);
       }
     } catch (error) {
-      alert(`Error: ${error.message}`);
+      console.error("Error during login:", error.message);
     }
   };
 
   return (
-    <div className="login-page">
+    <div
+      className="login-page"
+      style={{
+        background: "radial-gradient(circle at bottom right,#73b2c9, #00a33e)",
+      }}
+    >
       <div className="login-container">
         <div className="verdi-title">
           Verdi

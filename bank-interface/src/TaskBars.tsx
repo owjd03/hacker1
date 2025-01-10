@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import React from "react";
 import "./Taskbars.css";
 
 function TaskBars() {
@@ -10,9 +11,6 @@ function TaskBars() {
         </Link>
         <Link to="/bank/borrowers" className="taskbar-button">
           Borrowers
-        </Link>
-        <Link to="/bank/search" className="taskbar-button">
-          Search
         </Link>
       </div>
     </div>

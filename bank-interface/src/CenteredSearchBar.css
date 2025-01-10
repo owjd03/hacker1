@@ -1,49 +1,64 @@
+.right-box {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  flex-direction: column; /* Ensure content stacks vertically */
+  transition: all 0.3s ease-in-out;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  min-width: 300px; /* Ensure minimum width */
+  min-height: 200px; /* Set a minimum height */
+}
+
+.right-box.expandable.expanded {
+  height: auto; /* Allow dynamic height expansion */
+}
+
 .search-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 100px; /* Adjust this value to move everything further down */
+  align-items: center; /* Center horizontally within container */
+  transition: height 0.3s ease-in-out;
+  overflow: hidden;
+  width: 100%; /* Ensure it adjusts to container width */
+}
+
+.search-container.expanded {
+  padding: 1rem;
 }
 
 .centered-search-bar {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px; /* Space between the search bar and the input fields */
+  gap: 0.5rem;
+  width: 100%; /* Make the search bar span the container */
+  max-width: 500px; /* Optional: limit the width */
+  justify-content: center;
 }
 
 .search-input {
-  padding: 10px;
-  font-size: 16px;
-}
-
-.search-button {
-  padding: 10px 20px;
-  font-size: 16px;
+  flex: 1; /* Allow the input to grow and fill space */
 }
 
 .input-fields {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 1rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 500px; /* Ensure alignment with the search bar */
 }
 
-.input-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-  width: 100%;
+.main-guy {
+  display: flex; /* Use Flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; 
 }
 
-.input-group label {
-  margin-bottom: 5px;
-  font-size: 14px;
+.bold-label {
+   font-weight: bold;
 }
 
-.input-field {
-  padding: 8px;
-  font-size: 16px;
-  width: 100%;
-  box-sizing: border-box;
+.h3 {
+    color:#007a50;
 }

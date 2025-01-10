@@ -1,0 +1,84 @@
+{
+    "companies": [
+        {
+            "company_name": "OmegaGlobal",
+            "co2_emissions": 681.99,
+            "energy": 4163.02,
+            "water_efficiency": 72.14,
+            "esg_score": 84.36,
+            "ai_response": "Company A demonstrates a strong ESG performance with excellent water efficiency and a high ESG score. Focus could be placed on further reducing CO₂ emissions."
+        },
+        {
+            "company_name": "Company B",
+            "co2_emissions": 453.98,
+            "energy": 4371.84,
+            "water_efficiency": 26.48,
+            "esg_score": 86.9,
+            "ai_response": "Company B has a solid ESG score but could benefit from improving water efficiency to align with sustainability goals."
+        },
+        {
+            "company_name": "Company C",
+            "co2_emissions": 398.31,
+            "energy": 610.97,
+            "water_efficiency": 47.04,
+            "esg_score": 56.0,
+            "ai_response": "Company C shows low energy consumption, but its ESG score indicates room for improvement in overall sustainability practices."
+        },
+        {
+            "company_name": "Company D",
+            "co2_emissions": 420.87,
+            "energy": 2889.56,
+            "water_efficiency": 74.79,
+            "esg_score": 82.13,
+            "ai_response": "Company D has a commendable water efficiency and a strong ESG score. Continued focus on reducing energy consumption could enhance its sustainability profile."
+        },
+        {
+            "company_name": "Company E",
+            "co2_emissions": 530.7,
+            "energy": 3998.17,
+            "water_efficiency": 82.94,
+            "esg_score": 70.51,
+            "ai_response": "Company E exhibits impressive water efficiency, though efforts to reduce energy use and emissions could significantly boost its ESG score."
+        },
+        {
+            "company_name": "Company F",
+            "co2_emissions": 192.5,
+            "energy": 1000.32,
+            "water_efficiency": 30.15,
+            "esg_score": 11.64,
+            "ai_response": "Company F has low CO₂ emissions and energy consumption, but its low ESG score suggests a need for improvement in water efficiency and other sustainability areas."
+        },
+        {
+            "company_name": "Company G",
+            "co2_emissions": 835.42,
+            "energy": 2856.82,
+            "water_efficiency": 53.54,
+            "esg_score": 38.42,
+            "ai_response": "Company G faces challenges in managing emissions and energy use. Improving its ESG initiatives could lead to better sustainability outcomes."
+        },
+        {
+            "company_name": "Company H",
+            "co2_emissions": 787.34,
+            "energy": 4011.91,
+            "water_efficiency": 25.83,
+            "esg_score": 80.85,
+            "ai_response": "Company H has a strong ESG score, but it could achieve greater efficiency by focusing on water management and reducing emissions."
+        },
+        {
+            "company_name": "Company I",
+            "co2_emissions": 521.9,
+            "energy": 734.38,
+            "water_efficiency": 71.1,
+            "esg_score": 80.95,
+            "ai_response": "Company I maintains a good balance of energy use and water efficiency, contributing to a high ESG score. Further emission reductions could enhance its sustainability."
+        },
+        {
+            "company_name": "Company J",
+            "co2_emissions": 303.8,
+            "energy": 2523.06,
+            "water_efficiency": 39.86,
+            "esg_score": 68.85,
+            "ai_response": "Company J has relatively low CO₂ emissions but could focus on improving water efficiency to raise its ESG score."
+        }
+    ]
+}

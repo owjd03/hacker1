@@ -1,11 +1,19 @@
 import { useState } from "react";
-import fakeBorrowers, { Borrower, documentUploadData, transactionData } from "./fakeBorrowers";
+import fakeBorrowers, {
+  Borrower,
+  documentUploadData,
+  transactionData,
+} from "./fakeBorrowers";
 import "./Borrowers.css";
 import React from "react";
 
 function Borrowers() {
-  const [selectedView, setSelectedView] = useState<"main" | "documents" | "transactions">("main");
-  const [selectedBorrower, setSelectedBorrower] = useState<Borrower | null>(null);
+  const [selectedView, setSelectedView] = useState<
+    "main" | "documents" | "transactions"
+  >("main");
+  const [selectedBorrower, setSelectedBorrower] = useState<Borrower | null>(
+    null
+  );
 
   // Filter documents and transactions for the selected borrower
   const filteredDocuments = selectedBorrower
@@ -15,14 +23,12 @@ function Borrowers() {
     ? transactionData.filter((txn) => txn.borrowerId === selectedBorrower.id)
     : [];
 
+  const [searchTerm, setSearchTerm] = useState("");
 
-    const [searchTerm, setSearchTerm] = useState("");
-    
-    // Filter borrowers based on search term
-    const filteredBorrowers = fakeBorrowers.filter((borrower) =>
-      borrower.name.toLowerCase().includes(searchTerm.toLowerCase())
-
-    );
+  // Filter borrowers based on search term
+  const filteredBorrowers = fakeBorrowers.filter((borrower) =>
+    borrower.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   if (selectedView === "documents") {
     return (
@@ -43,7 +49,13 @@ function Borrowers() {
               <tr key={index}>
                 <td>{doc.date}</td>
                 <td>{doc.name}</td>
-                <td className={doc.status === "Rejected" ? "text-red" : "text-green"}>{doc.status}</td>
+                <td
+                  className={
+                    doc.status === "Rejected" ? "text-red" : "text-green"
+                  }
+                >
+                  {doc.status}
+                </td>
                 <td>{doc.reason}</td>
                 <td>{doc.category}</td>
               </tr>
@@ -92,15 +104,6 @@ function Borrowers() {
     return (
       <div className="borrower-detail">
         <h1>{selectedBorrower.name}</h1>
-      <div className="discrepancy-box">
-        <h2>Discrepancies</h2>
-          <div className="discrepancy-table">
-            <div className="row">
-              <span className="reason">Reason: {selectedBorrower.reason}</span>
-              <span className="date">Date: {selectedBorrower.date}</span>
-            </div>
-          </div>
-        </div>
         <div className="progress-bar">
           <p>
             Solar:{" "}
@@ -108,8 +111,7 @@ function Borrowers() {
             {selectedBorrower.solar}%
           </p>
           <p>
-            Wind:{" "}
-            <input type="range" value={selectedBorrower.wind} readOnly />{" "}
+            Wind: <input type="range" value={selectedBorrower.wind} readOnly />{" "}
             {selectedBorrower.wind}%
           </p>
           <p>
@@ -119,8 +121,17 @@ function Borrowers() {
           </p>
         </div>
         <div className="buttons">
-          <button onClick={() => setSelectedView("documents")}>Documents</button>
-          <button onClick={() => setSelectedView("transactions")}>Transactions</button>
+          <button onClick={() => setSelectedView("documents")}>
+            Documents
+          </button>
+          <button
+            onClick={() => setSelectedView("transactions")}
+            style={{
+              margin: "0px 20px", // Adds a 20px margin around the button
+            }}
+          >
+            Transactions
+          </button>
           <button onClick={() => setSelectedBorrower(null)}>Back</button>
         </div>
       </div>
@@ -138,17 +149,19 @@ function Borrowers() {
         onChange={(e) => setSearchTerm(e.target.value)}
         className="search-input"
       />
-      
+
       <ul>
         {filteredBorrowers.map((borrower) => (
           <li key={borrower.id}>
-          <button
-            onClick={() => setSelectedBorrower(borrower)}
-            className={`borrower-link ${borrower.discrepancies > 0 ? "btn-red" : "btn-green"}`}
-          >
-            {borrower.name}
-          </button>
-        </li>
+            <button
+              onClick={() => setSelectedBorrower(borrower)}
+              className={`borrower-link ${
+                borrower.discrepancies > 0 ? "btn-red" : "btn-green"
+              }`}
+            >
+              {borrower.name}
+            </button>
+          </li>
         ))}
       </ul>
     </div>

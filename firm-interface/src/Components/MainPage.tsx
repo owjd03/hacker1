@@ -245,7 +245,7 @@ function MainPage() {
             style={{
               padding: "10px 20px",
               fontSize: "16px",
-              backgroundColor: "#990011",
+              backgroundColor: "#077bff",
               color: "#FCF6F5",
               border: "none",
               borderRadius: "5px",
@@ -258,34 +258,6 @@ function MainPage() {
             }}
           >
             Summary
-          </button>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "50px", // Set a fixed height for the container
-          }}
-        >
-          <button
-            onClick={() => setShowDetails(true)}
-            style={{
-              padding: "10px 20px",
-              fontSize: "16px",
-              backgroundColor: "#990011",
-              color: "#FCF6F5",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-              minWidth: "120px",
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            View More
           </button>
         </div>
       </div>

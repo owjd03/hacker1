@@ -6,27 +6,50 @@
     flex-wrap: wrap;
   }
   
-  .left-box, .right-box {
+  .right-box {
+    display: flex; /* Enable Flexbox */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    flex: 1; /* Allow it to grow/shrink equally */
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #f9f9f9; /* Background color */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow */
+    padding: 1rem; /* Add padding */
+    text-align: center; /* Center align text */
+  }
+  
+  .right-box.expandable {
+    transition: all 0.3s ease-in-out; /* Smooth animation for expansion */
+  }
+  .left-box {
     flex: 1; /* Make both boxes the same width */
     top: 40px;
     border: 1px solid #ccc;
     border-radius: 10px;
     background-color: #f9f9f9;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+
+  }
+  
+
+
+  .left-header {
+    display: block;
+  font-size: 1.5em; /* Relative to the root font size (default is 16px, so 1.5 * 16px = 24px) */
+  font-weight: bold; /* Typically a bold weight */
+  margin-top: 0.83em; /* Vertical margin above */
+  margin-bottom: 0.83em; /* Vertical margin below */
+  line-height: normal; 
+  color:#007a50;
+
   }
 
 
-  .left-box h2, .right-box h2{
-    color: #007a50;
-  }
 
-  .left-box p, .right-box p{
-    color: #000;
-  }
-  /* Optional: Add a max-width to avoid very wide boxes on larger screens */
-  .left-box, .right-box {
-    max-width: 48%; /* 48% allows space for the gap */
-  }
   /* Ensure the content starts below the navigation bar */
   .home-page {
     display: flex;
@@ -61,7 +84,7 @@
     background-color: #0056b3;
   }
 
-.contract-button {
+  .contract-button {
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 16px;
@@ -71,7 +94,17 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 10%;
+    text-decoration: none; /* Remove underline */
+    height: 30px;
+    text-align: center;
+    font-size: 16px;
+    /* Flexbox to center text */
+    display: flex;
+    justify-content: center; /* Center text horizontally */
+    align-items: center; /* Center text vertically */
   }
+  
   
   .contract-button:hover {
     background-color: #0056b3;

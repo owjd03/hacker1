@@ -1,7 +1,5 @@
-.borrowers-page,
 .document-upload,
-.transactions,
-.borrower-detail {
+.transactions {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,6 +9,32 @@
   margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
+}
+
+.borrower-detail{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+
+
+.borrowers-page {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+
 }
 
 /* Heading Styling */
@@ -50,7 +74,13 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  align-items: center; /* Center the text vertically */
+  width: 200px; /* Set a fixed width for all buttons */
+  height: 50px; /* Set a fixed height for all buttons */
+  margin: 10px; /* Add spacing between buttons */
+  box-sizing: border-box; /* Include padding and border in the size */
 }
+
 
 .btn-red {
   background-color: red;
@@ -100,7 +130,7 @@ tbody td {
 /* Buttons container */
 .buttons {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin-top: 20px; /* Add spacing above the button */
 }
 

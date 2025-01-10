@@ -7,7 +7,7 @@ function Contract() {
   const [isCompanyValid, setIsCompanyValid] = useState(false);
   const [error, setError] = useState("");
   const [contractItems, setContractItems] = useState([
-    { item: "", amount: "", funds: "", milestones: [{ volume: "", funds: "" }] },
+    { item: "", amount: "", funds: "", milestones: [{ amount: "", funds: "" }] },
   ]);
 
   const handleCompanySearch = async (event: React.FormEvent) => {
@@ -51,7 +51,7 @@ function Contract() {
   const handleAddRow = () => {
     setContractItems([
       ...contractItems,
-      { item: "", amount: "", funds: "", milestones: [{ volume: "", funds: "" }] },
+      { item: "", amount: "", funds: "", milestones: [{ amount: "", funds: "" }] },
     ]);
   };
 
@@ -69,7 +69,7 @@ function Contract() {
 
   const handleAddMilestone = (itemIndex: number) => {
     const updatedItems = [...contractItems];
-    updatedItems[itemIndex].milestones.push({ volume: "", funds: "" });
+    updatedItems[itemIndex].milestones.push({ amount: "", funds: "" });
     setContractItems(updatedItems);
   };
 
@@ -107,7 +107,7 @@ function Contract() {
         amount: item.amount,
         funds: item.funds,
         milestones: item.milestones.map((milestone) => ({
-          volume: milestone.volume,
+          amount: milestone.amount,
           funds: milestone.funds,
         })),
       })),
@@ -161,7 +161,7 @@ function Contract() {
               <tr>
                 <th>Item</th>
                 <th>Amount</th>
-                <th>Funds</th>
+                <th>Funds(ETH)</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -216,8 +216,8 @@ function Contract() {
                       <table className="milestone-table">
                         <thead>
                           <tr>
-                            <th>Volume</th>
-                            <th>Funds</th>
+                            <th>Amount</th>
+                            <th>Funds(ETH)</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -227,12 +227,12 @@ function Contract() {
                               <td>
                                 <input
                                   type="number"
-                                  value={milestone.volume}
+                                  value={milestone.amount}
                                   onChange={(e) =>
                                     handleMilestoneChange(
                                       index,
                                       milestoneIndex,
-                                      "volume",
+                                      "amount",
                                       e.target.value
                                     )
                                   }
@@ -280,7 +280,8 @@ function Contract() {
               ))}
             </tbody>
           </table>
-          <button type="button" onClick={handleAddRow}>Add Row</button>
+          <button type="button" onClick={handleAddRow}>Add Contract
+          </button>
           <button type="submit" className="submit-button">Submit</button>
         </form>
       )}

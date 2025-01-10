@@ -1,17 +1,6 @@
 {
   "name": "server",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
   "type": "commonjs",
->>>>>>> Stashed changes
-=======
-  "type": "commonjs",
->>>>>>> Stashed changes
-=======
-  "type": "commonjs",
->>>>>>> Stashed changes
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -22,6 +11,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "axios": "^1.7.9",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
@@ -30,6 +20,7 @@
     "fs": "^0.0.1-security",
     "multer": "^1.4.5-lts.1",
     "nodemon": "^3.1.9",
+    "openai": "^4.77.4",
     "path": "^0.12.7"
   }
 }

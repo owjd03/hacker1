@@ -11,31 +11,17 @@ app.use(cors()); // Allow requests from your frontend (port 5173)
 app.use(bodyParser.json()); // Parse JSON data from incoming requests
 
 // Import routes
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-const submitRoutes = require('./routes/submitContact'); // Load routes from 'server/routes'
-app.use('/api', submitRoutes); // Prefix API routes with '/api'
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 const moduleRoutes= require('./routes/moduleRoutes'); // Import module routes
-// const chatGPTRoutes = require('./routes/chatGPT.js'); // Import ChatGPT routes
 const esgRoutes = require('./routes/esgRoutes'); // Import esg routes
-const fundRoutes = require('./routes/fundRoutes'); // Import fund routes
+const contractRoutes = require('./routes/contractRoutes'); // Import fund routes
 
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
+app.use('/api/modules', moduleRoutes); 
 app.use('/api/esgData', esgRoutes);
-app.use('/api/moduleRoutes', moduleRoutes); 
-// app.use('/api/fundRoutes', fundRoutes);
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+app.use('/api/contracts', contractRoutes);
 
 // Start the server
 app.listen(port, () => {

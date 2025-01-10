@@ -1,4 +1,5 @@
 const OpenAI = require('openai'); // Import OpenAI SDK to interact with the API
+require('dotenv').config();
 
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY, // Ensure your OpenAI API key is set as an environment variable

@@ -1,0 +1,14 @@
+//storeESGData POST request /esgdata
+{
+    "firmName": "ABC",
+    "date": 1673116800, // Unix timestamp for January 8, 2023
+    "carbonEmissions": 100, // Amount of carbon emissions in metric tons
+    "energyEfficiency": 85 // Energy efficiency as a percentage
+}
+//getESGData GET response /esgdata/:firmName (ABC)
+{
+    "firmName": "ABC",
+    "date": "1673116800",
+    "carbonEmissions": "100",
+    "energyEfficiency": "85"
+}

@@ -5,7 +5,7 @@ const router = express.Router();
 // POST route to store ESG data
 router.post('/', storeESGData);
 
-// GET route to retrieve ESG data by index
+// GET route to retrieve ESG data by name
 router.get('/:firmName', getESGData);
 
 module.exports = router;
